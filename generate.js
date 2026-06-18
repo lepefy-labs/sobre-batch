@@ -18,7 +18,8 @@ export async function generateContent(user, type) {
 
   let parsed;
   try {
-    parsed = JSON.parse(raw.trim());
+    const cleaned = raw.trim().replace(/^```json\s*/i, '').replace(/```\s*$/i, '').trim();
+    parsed = JSON.parse(cleaned);
   } catch {
     throw new Error(`JSON parse failed for user ${user.id}. Raw response: ${raw}`);
   }
