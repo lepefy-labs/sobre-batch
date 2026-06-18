@@ -1,0 +1,16 @@
+{
+  "name": "sobre-batch",
+  "version": "1.0.0",
+  "description": "Nightly content generation batch for Sobre PWA",
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.36.3",
+    "@supabase/supabase-js": "^2.49.4"
+  }
+}
