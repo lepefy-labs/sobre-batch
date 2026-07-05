@@ -1,28 +1,21 @@
 // user: { name, lang, mood, index }
-// mood: 'low' | 'neutral' | 'good' | 'great'
+// mood: 'very_low' | 'low' | 'neutral' | 'good' | 'great'
 // lang: 'it' | 'fr'
 
-const moodContextIT = {
-  low: 'si sente stanca e un po\' giù di corda',
-  neutral: 'si sente nella norma, né bene né male',
-  good: 'si sente bene e abbastanza serena',
-  great: 'si sente benissimo, in forma e positiva',
-};
-
-const moodContextFR = {
-  low: 'se sent fatiguée et un peu déprimée',
-  neutral: 'se sent dans la normale, ni bien ni mal',
-  good: 'se sent bien et assez sereine',
-  great: 'se sent très bien, en forme et positive',
+const moodPromptLine = {
+  it: (mood) => `Il livello di energia rilevato oggi dall'utente è: ${mood} (scala: very_low, low, neutral, good, great). Genera il contenuto nel tono di distacco consapevole del brand — mai un linguaggio consolatorio o da coach motivazionale, mai nominare esplicitamente l'etichetta tecnica del livello.`,
+  fr: (mood) => `Le niveau d'énergie relevé aujourd'hui pour l'utilisatrice est : ${mood} (échelle : very_low, low, neutral, good, great). Génère le contenu dans le ton de détachement conscient de la marque — jamais un langage consolant ni de coach motivationnel, ne jamais nommer explicitement l'étiquette technique du niveau.`,
 };
 
 export function buildMorningPrompt({ name, lang, mood }) {
   const isIT = lang === 'it';
-  const moodCtx = isIT ? moodContextIT[mood] ?? moodContextIT.neutral : moodContextFR[mood] ?? moodContextFR.neutral;
+  const moodLine = isIT ? moodPromptLine.it(mood) : moodPromptLine.fr(mood);
 
   if (isIT) {
     return `Sei il motore editoriale di Sobre, una PWA di benessere per donne adulte.
-Genera un pensiero del mattino (tipo "thought") per ${name}, che stamattina ${moodCtx}.
+Genera un pensiero del mattino (tipo "thought") per ${name}.
+
+${moodLine}
 
 Tono editoriale:
 - Voce calma, adulta, mai infantile né eccessivamente motivazionale
@@ -44,7 +37,9 @@ tags: 2-4 parole chiave tematiche in italiano, minuscolo.`;
   }
 
   return `Tu es le moteur éditorial de Sobre, une PWA de bien-être pour femmes adultes.
-Génère une pensée du matin (type "thought") pour ${name}, qui ce matin ${moodCtx}.
+Génère une pensée du matin (type "thought") pour ${name}.
+
+${moodLine}
 
 Ton éditorial :
 - Voix calme, adulte, jamais infantile ni excessivement motivante
@@ -67,13 +62,15 @@ tags : 2-4 mots-clés thématiques en français, minuscules.`;
 
 export function buildEveningPrompt({ name, lang, mood, index }) {
   const isIT = lang === 'it';
-  const moodCtx = isIT ? moodContextIT[mood] ?? moodContextIT.neutral : moodContextFR[mood] ?? moodContextFR.neutral;
+  const moodLine = isIT ? moodPromptLine.it(mood) : moodPromptLine.fr(mood);
   const isStory = index % 2 === 0;
 
   if (isStory) {
     if (isIT) {
       return `Sei il motore editoriale di Sobre, una PWA di benessere per donne adulte.
-Genera una storia serale (tipo "story") per ${name}, che oggi ${moodCtx}.
+Genera una storia serale (tipo "story") per ${name}.
+
+${moodLine}
 
 Tono editoriale:
 - Protagonista: donna tra 30 e 45 anni, nome italiano realistico
@@ -99,7 +96,9 @@ tags: 2-4 parole chiave tematiche in italiano, minuscolo.`;
     }
 
     return `Tu es le moteur éditorial de Sobre, une PWA de bien-être pour femmes adultes.
-Génère une histoire du soir (type "story") pour ${name}, qui aujourd'hui ${moodCtx}.
+Génère une histoire du soir (type "story") pour ${name}.
+
+${moodLine}
 
 Ton éditorial :
 - Protagoniste : femme entre 30 et 45 ans, prénom français réaliste
@@ -127,7 +126,9 @@ tags : 2-4 mots-clés thématiques en français, minuscules.`;
   // tip
   if (isIT) {
     return `Sei il motore editoriale di Sobre, una PWA di benessere per donne adulte.
-Genera un consiglio serale (tipo "tip") per ${name}, che oggi ${moodCtx}.
+Genera un consiglio serale (tipo "tip") per ${name}.
+
+${moodLine}
 
 Tono editoriale:
 - Pratico, diretto, fondato — mai da "guru del benessere"
@@ -151,7 +152,9 @@ tags: 2-4 parole chiave tematiche in italiano, minuscolo.`;
   }
 
   return `Tu es le moteur éditorial de Sobre, une PWA de bien-être pour femmes adultes.
-Génère un conseil du soir (type "tip") pour ${name}, qui aujourd'hui ${moodCtx}.
+Génère un conseil du soir (type "tip") pour ${name}.
+
+${moodLine}
 
 Ton éditorial :
 - Pratique, direct, fondé — jamais façon "gourou du bien-être"
