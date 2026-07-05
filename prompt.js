@@ -28,7 +28,7 @@ Rispondi SOLO con questo JSON (niente markdown, niente testo extra):
   "type": "thought",
   "slot": "morning",
   "body": "...",
-  "mood_target": "low|neutral|good|great|null",
+  "mood_target": "very_low|low|neutral|good|great|null",
   "tags": ["tag1", "tag2"]
 }
 
@@ -52,7 +52,7 @@ Réponds UNIQUEMENT avec ce JSON (pas de markdown, pas de texte supplémentaire)
   "type": "thought",
   "slot": "morning",
   "body": "...",
-  "mood_target": "low|neutral|good|great|null",
+  "mood_target": "very_low|low|neutral|good|great|null",
   "tags": ["tag1", "tag2"]
 }
 
@@ -87,7 +87,7 @@ Rispondi SOLO con questo JSON (niente markdown, niente testo extra):
   "slot": "evening",
   "title": "...",
   "body": "...",
-  "mood_target": "low|neutral|good|great|null",
+  "mood_target": "very_low|low|neutral|good|great|null",
   "tags": ["tag1", "tag2"]
 }
 
@@ -115,7 +115,7 @@ Réponds UNIQUEMENT avec ce JSON (pas de markdown, pas de texte supplémentaire)
   "slot": "evening",
   "title": "...",
   "body": "...",
-  "mood_target": "low|neutral|good|great|null",
+  "mood_target": "very_low|low|neutral|good|great|null",
   "tags": ["tag1", "tag2"]
 }
 
@@ -143,7 +143,7 @@ Rispondi SOLO con questo JSON (niente markdown, niente testo extra):
   "type": "tip",
   "slot": "evening",
   "body": "...",
-  "mood_target": "low|neutral|good|great|null",
+  "mood_target": "very_low|low|neutral|good|great|null",
   "tags": ["tag1", "tag2"]
 }
 
@@ -169,7 +169,7 @@ Réponds UNIQUEMENT avec ce JSON (pas de markdown, pas de texte supplémentaire)
   "type": "tip",
   "slot": "evening",
   "body": "...",
-  "mood_target": "low|neutral|good|great|null",
+  "mood_target": "very_low|low|neutral|good|great|null",
   "tags": ["tag1", "tag2"]
 }
 
